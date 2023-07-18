@@ -1,0 +1,2 @@
+aws --profile playground sns publish --message 'Meetup!' --topic-arn 
+aws --profile playground sqs receive-message --queue-url
