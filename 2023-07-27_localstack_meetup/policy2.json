@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::000000000002:root"
+        ]
+      },
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": ["arn:aws:s3:::demo-bucket"]
+    }
+  ]
+}
