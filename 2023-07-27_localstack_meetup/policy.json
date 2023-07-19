@@ -3,7 +3,7 @@
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "s3:CreateBucket",
+      "Action": ["s3:CreateBucket", "s3:ListBuckets"],
       "Resource": "*"
     }
   ]

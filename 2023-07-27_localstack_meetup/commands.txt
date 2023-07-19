@@ -1,6 +1,6 @@
 ### 1A ###
 
-export AWS_SECRET_ACCESS_KEY=test
+export AWS_ACCESS_KEY_ID=000000000000 AWS_SECRET_ACCESS_KEY=test
 
 # root
 awslocal sts get-caller-identity
@@ -8,8 +8,8 @@ awslocal sts get-caller-identity
 awslocal iam create-user --user-name demo
 awslocal iam create-access-key --user-name demo
 
-awslocal iam create-policy --policy-name demo --policy-document file://policy.json
-awslocal iam attach-user-policy --user-name demo --policy-arn arn:aws:iam::000000000000:policy/demo
+awslocal iam create-policy --policy-name policy1 --policy-document file://policy.json
+awslocal iam attach-user-policy --user-name demo --policy-arn arn:aws:iam::000000000000:policy/policy1
 
 # demo
 export AWS_ACCESS_KEY_ID=  AWS_SECRET_ACCESS_KEY=
@@ -19,7 +19,7 @@ awslocal s3 mb s3://demo-bucket
 awslocal s3 ls
 
 # root
-awslocal iam create-policy-version --set-as-default --policy-arn arn:aws:iam::000000000000:policy/demo --policy-document file://policy.json
+awslocal iam create-policy-version --set-as-default --policy-arn arn:aws:iam::000000000000:policy/policy1 --policy-document file://policy.json
 
 ### 1B ###
 
@@ -29,6 +29,7 @@ export AWS_ACCESS_KEY_ID=000000000002
 awslocal s3 ls s3://demo-bucket
 
 # root
+vim policy2.json
 awslocal s3api put-bucket-policy --bucket demo-bucket --policy file://policy2.json
 
 ### 2 ###
