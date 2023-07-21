@@ -1,4 +1,8 @@
+DEBUG=1 ENFORCE_IAM=1 localstack start
+
+###
 ### 1A ###
+###
 
 export AWS_ACCESS_KEY_ID=000000000000 AWS_SECRET_ACCESS_KEY=test
 
@@ -21,7 +25,9 @@ awslocal s3 ls
 # root
 awslocal iam create-policy-version --set-as-default --policy-arn arn:aws:iam::000000000000:policy/policy1 --policy-document file://policy.json
 
+###
 ### 1B ###
+###
 
 # demo
 export AWS_ACCESS_KEY_ID=000000000002
@@ -33,6 +39,8 @@ vim policy2.json
 awslocal s3api put-bucket-policy --bucket demo-bucket --policy file://policy2.json
 
 ### 2 ###
+
+export AWS_ACCESS_KEY_ID=000000000000
 
 awslocal sns publish --message 'Meetup!' --topic-arn
 awslocal sqs receive-message --queue-url
