@@ -41,6 +41,6 @@ awslocal s3api put-bucket-policy --bucket demo-bucket --policy file://policy2.js
 ### 2 ###
 
 export AWS_ACCESS_KEY_ID=000000000000
-
+tflocal apply -auto-approve
 awslocal sns publish --message 'Meetup!' --topic-arn
 awslocal sqs receive-message --queue-url
